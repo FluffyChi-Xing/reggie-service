@@ -1,0 +1,1344 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>reggie documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">reggie documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >EmployeeService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/employee/employee.service.ts</code>
+        </p>
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#configService" >configService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#employeeEntity" >employeeEntity</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#jwtService" >jwtService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#add" >add</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#frozenEmployee" >frozenEmployee</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#insertOne" >insertOne</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#refreshToken" >refreshToken</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#reuse" >reuse</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#searchByPages" >searchByPages</a>
+                            </li>
+                            <li>
+                                <a href="#test" >test</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateUser" >updateUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#userLogin" >userLogin</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="add"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>add</b></span>
+                        <a href="#add"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>add(employee: <a href="../classes/RegisterDto.html" target="_self">RegisterDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="159"
+                                    class="link-to-prism">src/employee/employee.service.ts:159</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>employee</td>
+                                            <td>
+                                                            <code><a href="../classes/RegisterDto.html" target="_self" >RegisterDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="frozenEmployee"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>frozenEmployee</b></span>
+                        <a href="#frozenEmployee"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>frozenEmployee(user: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="234"
+                                    class="link-to-prism">src/employee/employee.service.ts:234</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="insertOne"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>insertOne</b></span>
+                        <a href="#insertOne"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>insertOne()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/employee/employee.service.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refreshToken"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>refreshToken</b></span>
+                        <a href="#refreshToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>refreshToken(str: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/employee/employee.service.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>str</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reuse"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>reuse</b></span>
+                        <a href="#reuse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>reuse(user: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="269"
+                                    class="link-to-prism">src/employee/employee.service.ts:269</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchByPages"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>searchByPages</b></span>
+                        <a href="#searchByPages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>searchByPages(pageNo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, pageSize: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="193"
+                                    class="link-to-prism">src/employee/employee.service.ts:193</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>pageNo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>pageSize</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="test"></a>
+                    <span class="name">
+                        <span ><b>test</b></span>
+                        <a href="#test"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>test()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="25"
+                                    class="link-to-prism">src/employee/employee.service.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>{ code: any; message: string; data: {}; }</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUser"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateUser</b></span>
+                        <a href="#updateUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateUser(user: <a href="../classes/UpdateDto.html" target="_self">UpdateDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="309"
+                                    class="link-to-prism">src/employee/employee.service.ts:309</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="../classes/UpdateDto.html" target="_self" >UpdateDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userLogin"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>userLogin</b></span>
+                        <a href="#userLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>userLogin(user: <a href="../classes/LoginDto.html" target="_self">LoginDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/employee/employee.service.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="../classes/LoginDto.html" target="_self" >LoginDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="configService"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>configService</b></span>
+                        <a href="#configService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ConfigService</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Inject(ConfigService)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/employee/employee.service.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="employeeEntity"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>employeeEntity</b></span>
+                        <a href="#employeeEntity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../entitys/Employee.html" target="_self" >Repository&lt;Employee&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @InjectRepository(Employee)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/employee/employee.service.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="jwtService"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>jwtService</b></span>
+                        <a href="#jwtService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>JwtService</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Inject(JwtService)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/employee/employee.service.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpStatus, Inject, Injectable } from &#x27;@nestjs/common&#x27;;
+import { LoginDto } from &#x27;./dto/employee-login.dto&#x27;;
+import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { Employee } from &#x27;./entities/employee.entity&#x27;;
+import { Repository } from &#x27;typeorm&#x27;;
+import { md5 } from &#x27;../utils/md5&#x27;;
+import { ConfigService } from &#x27;@nestjs/config&#x27;;
+import { JwtService } from &#x27;@nestjs/jwt&#x27;;
+import { RegisterDto } from &#x27;./dto/employee-register.dto&#x27;;
+import { BackVo } from &#x27;./vo/employee-back.vo&#x27;;
+import { UpdateDto } from &#x27;./dto/employee-update.dto&#x27;;
+
+@Injectable()
+export class EmployeeService {
+  //注入employee entity
+  @InjectRepository(Employee)
+  private employeeEntity: Repository&lt;Employee&gt;;
+  //注入config service
+  @Inject(ConfigService)
+  private configService: ConfigService;
+  //注入JWT service
+  @Inject(JwtService)
+  private jwtService: JwtService;
+  //测试接口
+  test() {
+    return {
+      code: HttpStatus.OK,
+      message: &#x60;This action returns all employee&#x60;,
+      data: {},
+    };
+  }
+  //初始插入表数据
+  async insertOne() {
+    try {
+      const user &#x3D; new Employee();
+      user.username &#x3D; &#x27;admin&#x27;;
+      user.password &#x3D; md5(&#x27;123456&#x27;);
+      user.sex &#x3D; &#x27;1&#x27;;
+      user.phone &#x3D; &#x27;13144453456&#x27;;
+      user.status &#x3D; 1;
+      user.id_number &#x3D; &#x27;546342344354654465&#x27;;
+      const result &#x3D; await this.employeeEntity.insert(user);
+      return {
+        code: HttpStatus.OK,
+        message: &#x27;插入成功&#x27;,
+        data: result,
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: &#x27;错误&#x27;,
+        data: e,
+      };
+    }
+  }
+  //用户登录接口
+  async userLogin(user: LoginDto) {
+    try {
+      const person &#x3D; await this.employeeEntity.findOne({
+        where: {
+          username: user.username,
+        },
+      });
+      if (person.password !&#x3D;&#x3D; md5(user.password)) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: &#x27;密码错误&#x27;,
+        };
+      }
+      if (person.status &#x3D;&#x3D;&#x3D; 0) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: &#x27;用户已被封禁&#x27;,
+        };
+      }
+      //生成access token
+      const access &#x3D; this.jwtService.sign(
+        {
+          username: user.username,
+          password: user.password,
+        },
+        {
+          expiresIn: this.configService.get(&#x27;jwt_server_access&#x27;),
+        },
+      );
+      const refresh &#x3D; this.jwtService.sign(
+        {
+          username: user.username,
+        },
+        {
+          expiresIn: this.configService.get(&#x27;jwt_server_refresh&#x27;),
+        },
+      );
+      return {
+        code: HttpStatus.OK,
+        message: &#x27;登陆成功&#x27;,
+        data: {
+          accessToken: access,
+          refreshToken: refresh,
+        },
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: &#x27;错误&#x27;,
+        data: e,
+      };
+    }
+  }
+  //token 刷新接口
+  async refreshToken(str: string) {
+    try {
+      const data &#x3D; await this.jwtService.verify(str);
+      const user &#x3D; await this.employeeEntity.findOne({
+        where: {
+          username: data.username,
+        },
+      });
+      if (!user) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: &#x27;用户不存在&#x27;,
+        };
+      }
+      const access &#x3D; this.jwtService.sign(
+        {
+          username: user.username,
+          password: user.password,
+        },
+        {
+          expiresIn: this.configService.get(&#x27;jwt_server_access&#x27;),
+        },
+      );
+      const refresh &#x3D; this.jwtService.sign(
+        {
+          username: user.username,
+        },
+        {
+          expiresIn: this.configService.get(&#x27;jwt_server_refresh&#x27;),
+        },
+      );
+      return {
+        code: HttpStatus.OK,
+        message: &#x27;刷新成功&#x27;,
+        data: {
+          access: access,
+          refresh: refresh,
+        },
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: &#x27;refresh token 已过期,请重新登录&#x27;,
+        data: e,
+      };
+    }
+  }
+  //添加员工接口
+  async add(employee: RegisterDto) {
+    try {
+      const user &#x3D; await this.employeeEntity.findOne({
+        where: {
+          username: employee.username,
+        },
+      });
+      if (user) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: &#x27;用户已注册，请登录&#x27;,
+        };
+      }
+      const newEmployee &#x3D; new Employee();
+      newEmployee.username &#x3D; employee.username;
+      newEmployee.password &#x3D; md5(employee.password);
+      newEmployee.sex &#x3D; employee.sex;
+      newEmployee.phone &#x3D; employee.phone;
+      newEmployee.status &#x3D; employee.status;
+      newEmployee.id_number &#x3D; employee.id_number;
+      await this.employeeEntity.save(newEmployee);
+      return {
+        code: HttpStatus.OK,
+        message: &#x27;添加成功&#x27;,
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: &#x27;错误&#x27;,
+        data: e,
+      };
+    }
+  }
+  //分页查询员工数据
+  async searchByPages(pageNo: number, pageSize: number) {
+    try {
+      if (!pageNo || pageNo &lt; 0) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: &#x27;页码不能为空或小于0&#x27;,
+        };
+      }
+      const skipCount &#x3D; (pageNo - 1) * pageSize;
+      const [result, totalCount] &#x3D; await this.employeeEntity.findAndCount({
+        skip: skipCount,
+        take: pageSize,
+      });
+      const list &#x3D; [];
+      const vo &#x3D; new BackVo(); //使用vo规范返回数据的格式
+      await result.forEach((item) &#x3D;&gt; {
+        vo.username &#x3D; item.username;
+        vo.password &#x3D; item.password;
+        vo.sex &#x3D; item.sex;
+        vo.phone &#x3D; item.phone;
+        vo.id_number &#x3D; item.id_number;
+        vo.status &#x3D; item.status;
+        list.push(vo);
+      });
+      return {
+        code: HttpStatus.OK,
+        message: &#x27;拉取成功&#x27;,
+        data: {
+          result: list,
+          count: totalCount,
+        },
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: &#x27;拉取错误&#x27;,
+        data: e,
+      };
+    }
+  }
+  //禁用员工账号接口
+  async frozenEmployee(user: string) {
+    try {
+      const result &#x3D; await this.employeeEntity.findOne({
+        where: {
+          username: user,
+        },
+      });
+      if (!result) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: &#x27;用户不存在，错误&#x27;,
+        };
+      }
+      const person &#x3D; await this.employeeEntity.update(
+        {
+          username: user,
+        },
+        {
+          status: 0,
+        },
+      );
+      return {
+        code: HttpStatus.OK,
+        message: &#x60;用户: ${user} 账户已冻结&#x60;,
+        data: person,
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: &#x27;错误&#x27;,
+        data: e,
+      };
+    }
+  }
+  //解禁用户账户接口
+  async reuse(user: string) {
+    try {
+      const result &#x3D; await this.employeeEntity.findOne({
+        where: {
+          username: user,
+        },
+      });
+      if (!result) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: &#x27;未找到用户，错误&#x27;,
+        };
+      }
+      if (result.status !&#x3D;&#x3D; 0) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: &#x27;用户账户未被封禁，无需解冻&#x27;,
+        };
+      }
+      await this.employeeEntity.update(
+        {
+          username: user,
+        },
+        {
+          status: 1,
+        },
+      );
+      return {
+        code: HttpStatus.OK,
+        message: &#x27;成功解禁&#x27;,
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: &#x27;错误&#x27;,
+        data: e,
+      };
+    }
+  }
+  //更新用户接口
+  async updateUser(user: UpdateDto) {
+    try {
+      const person &#x3D; await this.employeeEntity.findOne({
+        where: {
+          username: user.username,
+        },
+      });
+      if (!person) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: &#x27;用户不存在&#x27;,
+        };
+      }
+      await this.employeeEntity.update(
+        {
+          username: user.username,
+        },
+        {
+          name: user.name,
+          password: user.password,
+          phone: user.phone,
+          sex: user.sex,
+          id_number: user.id_number,
+        },
+      );
+      return {
+        code: HttpStatus.OK,
+        message: &#x27;更新成功&#x27;,
+        data: {},
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: &#x27;错误&#x27;,
+        data: e,
+      };
+    }
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'EmployeeService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
