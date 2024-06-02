@@ -16,6 +16,8 @@ import { ImageUploadModule } from './image-upload/image-upload.module';
 import { UserModule } from './user/user.module';
 import { User } from './user/entity/user.entity';
 import { SmsModule } from './sms/sms.module';
+import { FlavorModule } from './flavor/flavor.module';
+import { Dish_Flavor } from './flavor/entities/flavor.entity';
 
 @Module({
   imports: [
@@ -37,7 +39,7 @@ import { SmsModule } from './sms/sms.module';
           database: configService.get('mysql_server_database'),
           synchronize: true,
           logging: true,
-          entities: [Employee, Category, Dish, SetMeal, User],
+          entities: [Employee, Category, Dish, SetMeal, User, Dish_Flavor],
           poolSize: 10,
           connectorPackage: 'mysql2',
           extra: {
@@ -60,6 +62,7 @@ import { SmsModule } from './sms/sms.module';
     ImageUploadModule,
     UserModule,
     SmsModule,
+    FlavorModule,
   ],
   controllers: [AppController],
   providers: [AppService],

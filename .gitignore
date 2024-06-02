@@ -42,9 +42,6 @@ lerna-debug.log*
 .env.production.local
 .env.local
 
-#oss
-.image-upload
-
 # temp directory
 .temp
 .tmp

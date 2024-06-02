@@ -6,7 +6,7 @@ export class User {
   id: number;
   @Column({
     comment: '用户名',
-    nullable: true,
+    unique: true,
     length: 50,
   })
   name: string;
@@ -29,6 +29,7 @@ export class User {
   id_number: string;
   @Column({
     comment: '账户状态',
+    default: 1,
   })
   status: number;
   @Column({

@@ -126,6 +126,7 @@ export class DishService {
           price: dish.price,
           image: dish.image,
           description: dish.description,
+          status: dish.status,
         },
       );
       return {
@@ -238,11 +239,26 @@ export class DishService {
   //定时统计菜品数量
   async getDishNumber() {
     try {
-      const count = await this.dishEntity.count();
+      const result = await this.dishEntity.find();
+      //已上线的菜品数量
+      let canSold = 0;
+      //已下架菜品数量
+      let unBuy = 0;
+      result.forEach((item) => {
+        if (item.status === 1) {
+          canSold++;
+        }
+        if (item.status === 0) {
+          unBuy++;
+        }
+      });
       return {
         code: HttpStatus.OK,
         message: '获取成功',
-        data: count,
+        data: {
+          sold: canSold,
+          unBuying: unBuy,
+        },
       };
     } catch (e) {
       return {

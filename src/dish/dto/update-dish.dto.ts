@@ -12,4 +12,5 @@ export class UpdateDishDto {
   sort: number;
   image: string;
   description: string;
+  status: number;
 }
