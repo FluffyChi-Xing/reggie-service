@@ -192,7 +192,7 @@ export class EmployeeService {
   //分页查询员工数据
   async searchByPages(pageNo: number, pageSize: number) {
     try {
-      if (!pageNo || pageNo < 0) {
+      if (!pageNo || pageNo <= 0) {
         return {
           code: HttpStatus.BAD_REQUEST,
           message: '页码不能为空或小于0',
@@ -204,8 +204,8 @@ export class EmployeeService {
         take: pageSize,
       });
       const list = [];
-      const vo = new BackVo(); //使用vo规范返回数据的格式
       await result.forEach((item) => {
+        const vo = new BackVo(); //使用vo规范返回数据的格式
         vo.username = item.username;
         vo.password = item.password;
         vo.sex = item.sex;
@@ -349,7 +349,7 @@ export class EmployeeService {
     try {
       const employee = await this.employeeEntity.findOne({
         where: {
-          name: name,
+          username: name,
         },
       });
       if (!employee) {
@@ -361,7 +361,7 @@ export class EmployeeService {
       return {
         code: HttpStatus.OK,
         message: '查询成功',
-        data: employee,
+        data: [employee],
       };
     } catch (e) {
       return {
