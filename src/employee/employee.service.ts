@@ -176,6 +176,7 @@ export class EmployeeService {
       newEmployee.phone = employee.phone;
       newEmployee.status = employee.status;
       newEmployee.id_number = employee.id_number;
+      newEmployee.name = employee.name;
       await this.employeeEntity.save(newEmployee);
       return {
         code: HttpStatus.OK,
@@ -212,6 +213,7 @@ export class EmployeeService {
         vo.phone = item.phone;
         vo.id_number = item.id_number;
         vo.status = item.status;
+        vo.name = item.name;
         list.push(vo);
       });
       return {
@@ -325,10 +327,11 @@ export class EmployeeService {
         },
         {
           name: user.name,
-          password: user.password,
+          password: md5(user.password),
           phone: user.phone,
           sex: user.sex,
           id_number: user.id_number,
+          status: user.status,
         },
       );
       return {

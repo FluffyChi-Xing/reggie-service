@@ -18,6 +18,8 @@ import { User } from './user/entity/user.entity';
 import { SmsModule } from './sms/sms.module';
 import { FlavorModule } from './flavor/flavor.module';
 import { Dish_Flavor } from './flavor/entities/flavor.entity';
+import { ShoppingCartModule } from './shopping_cart/shopping_cart.module';
+import { Shopping_cart } from './shopping_cart/entity/shopping_cart.entity';
 
 @Module({
   imports: [
@@ -39,7 +41,15 @@ import { Dish_Flavor } from './flavor/entities/flavor.entity';
           database: configService.get('mysql_server_database'),
           synchronize: true,
           logging: true,
-          entities: [Employee, Category, Dish, SetMeal, User, Dish_Flavor],
+          entities: [
+            Employee,
+            Category,
+            Dish,
+            SetMeal,
+            User,
+            Dish_Flavor,
+            Shopping_cart,
+          ],
           poolSize: 10,
           connectorPackage: 'mysql2',
           extra: {
@@ -63,6 +73,7 @@ import { Dish_Flavor } from './flavor/entities/flavor.entity';
     UserModule,
     SmsModule,
     FlavorModule,
+    ShoppingCartModule,
   ],
   controllers: [AppController],
   providers: [AppService],

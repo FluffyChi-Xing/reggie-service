@@ -22,8 +22,7 @@ export class MyLogger implements LoggerService {
         }),
         new transports.File({
           format: format.combine(format.timestamp(), format.json()),
-          filename: 'log-1.log',
-          maxsize: 4096,
+          filename: '111.log',
           dirname: 'log',
         }),
       ],

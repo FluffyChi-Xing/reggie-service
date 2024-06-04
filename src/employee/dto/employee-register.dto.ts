@@ -18,4 +18,5 @@ export class RegisterDto extends LoginDto {
     message: '状态不能为空',
   })
   status: number;
+  name: string;
 }

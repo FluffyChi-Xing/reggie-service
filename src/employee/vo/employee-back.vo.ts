@@ -6,4 +6,5 @@ export class BackVo {
   sex: string;
   id_number: string;
   status: number;
+  name: string;
 }
