@@ -67,4 +67,10 @@ export class EmployeeController {
   async searchOne(@Query('name') name: string) {
     return await this.employeeService.searchOne(name);
   }
+  //管理员拉取当日营业额
+  @Get('amount')
+  @UseGuards(LoginGuard)
+  async getAmount(@Query('employee_id') employee_id: number) {
+    return await this.employeeService.getAmount(employee_id);
+  }
 }

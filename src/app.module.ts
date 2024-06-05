@@ -20,6 +20,10 @@ import { FlavorModule } from './flavor/flavor.module';
 import { Dish_Flavor } from './flavor/entities/flavor.entity';
 import { ShoppingCartModule } from './shopping_cart/shopping_cart.module';
 import { Shopping_cart } from './shopping_cart/entity/shopping_cart.entity';
+import { OrderModule } from './order/order.module';
+import { Orders } from './order/entity/orders.entity';
+import { Order_detail } from './order/entity/order_detail';
+import { Amount } from './order/entity/todayAmount.entity';
 
 @Module({
   imports: [
@@ -49,6 +53,9 @@ import { Shopping_cart } from './shopping_cart/entity/shopping_cart.entity';
             User,
             Dish_Flavor,
             Shopping_cart,
+            Orders,
+            Order_detail,
+            Amount,
           ],
           poolSize: 10,
           connectorPackage: 'mysql2',
@@ -74,6 +81,7 @@ import { Shopping_cart } from './shopping_cart/entity/shopping_cart.entity';
     SmsModule,
     FlavorModule,
     ShoppingCartModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],

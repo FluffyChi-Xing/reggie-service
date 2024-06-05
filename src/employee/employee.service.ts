@@ -9,6 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import { RegisterDto } from './dto/employee-register.dto';
 import { BackVo } from './vo/employee-back.vo';
 import { UpdateDto } from './dto/employee-update.dto';
+import { Amount } from '../order/entity/todayAmount.entity';
 
 @Injectable()
 export class EmployeeService {
@@ -21,6 +22,9 @@ export class EmployeeService {
   //注入JWT service
   @Inject(JwtService)
   private jwtService: JwtService;
+  //注入amount entity
+  @InjectRepository(Amount)
+  private amountEntity: Repository<Amount>;
   //测试接口
   test() {
     return {
@@ -169,6 +173,7 @@ export class EmployeeService {
           message: '用户已注册，请登录',
         };
       }
+      const employee_id = (await this.employeeEntity.count()) + 1;
       const newEmployee = new Employee();
       newEmployee.username = employee.username;
       newEmployee.password = md5(employee.password);
@@ -178,6 +183,10 @@ export class EmployeeService {
       newEmployee.id_number = employee.id_number;
       newEmployee.name = employee.name;
       await this.employeeEntity.save(newEmployee);
+      //插入amount entity
+      const amount = new Amount();
+      amount.employee_id = employee_id;
+      await this.amountEntity.save(amount);
       return {
         code: HttpStatus.OK,
         message: '添加成功',
@@ -365,6 +374,37 @@ export class EmployeeService {
         code: HttpStatus.OK,
         message: '查询成功',
         data: [employee],
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: '错误',
+        data: e,
+      };
+    }
+  }
+  //管理员获取当日营业额
+  async getAmount(id: number) {
+    try {
+      const amount = await this.amountEntity.findOne({
+        where: {
+          employee_id: id,
+        },
+      });
+      if (!amount) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: '错误',
+        };
+      }
+      return {
+        code: HttpStatus.OK,
+        message: '拉取成功',
+        data: {
+          amount: amount.amount,
+          cancel: amount.cancel_order_number,
+          finish: amount.finish_order_number,
+        },
       };
     } catch (e) {
       return {
