@@ -26,7 +26,7 @@ export class OrderController {
   async cancelOrder(@Body() cancel: CancelOrderDto) {
     return await this.orderService.cancelOrder(cancel);
   }
-  //管理员拉去订单
+  //管理员拉取订单
   @Get('pull')
   @UseGuards(LoginGuard)
   async pullOrders(
@@ -34,5 +34,11 @@ export class OrderController {
     @Query('pageNo') pageNo: number,
   ) {
     return await this.orderService.pullOrder(pageNo, pageSize);
+  }
+  //管理员查询订单
+  @Get('search')
+  @UseGuards(LoginGuard)
+  async searchOrder(@Query('id') id: number) {
+    return await this.orderService.searchOne(id);
   }
 }

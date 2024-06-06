@@ -27,7 +27,14 @@ export class OrderService {
   @InjectRepository(Amount)
   private amountEntity: Repository<Amount>;
   //默认地址-id对应关系
-  area = ['大连', '青岛', '上海', '北京', '广州', '深圳'];
+  area = [
+    '中央大街秋林大厦',
+    '中国巴洛克风格建筑区19号',
+    '太阳岛辽宁省电视台',
+    '神州大厦A座',
+    '哈尔滨工业大学中俄合作办学校区',
+    '道理菜市场一区',
+  ];
   //用户下单
   async createOrders(order: CreateOrdersDto) {
     try {
@@ -161,6 +168,12 @@ export class OrderService {
           message: '错误,订单不存在',
         };
       }
+      if (order.status === 0) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: '订单已完成',
+        };
+      }
       await this.ordersEntity.update(
         {
           id: cancel.order_id,
@@ -169,6 +182,10 @@ export class OrderService {
           status: -1,
         },
       );
+      return {
+        code: HttpStatus.OK,
+        message: '取消接单',
+      };
       if (cancel.employee_id) {
         await this.amountEntity.update(
           {
@@ -210,6 +227,33 @@ export class OrderService {
         message: '拉取成功',
         data: result,
         count: totalCount,
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: '错误',
+        data: e,
+      };
+    }
+  }
+  //根据订单号查询单一订单
+  async searchOne(id: number) {
+    try {
+      const result = await this.ordersEntity.findOne({
+        where: {
+          id: id,
+        },
+      });
+      if (!result) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: '错误,订单不存在',
+        };
+      }
+      return {
+        code: HttpStatus.OK,
+        message: '查询成功',
+        data: [result],
       };
     } catch (e) {
       return {
