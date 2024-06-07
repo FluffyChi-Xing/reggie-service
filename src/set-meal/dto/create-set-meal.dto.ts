@@ -17,4 +17,12 @@ export class CreateMealDto {
   code: string;
   description: string;
   image: string;
+  @IsNotEmpty({
+    message: 'c-u不能为空',
+  })
+  create_user: number;
+  @IsNotEmpty({
+    message: 'u-u不能为空',
+  })
+  update_user: number;
 }

@@ -20,4 +20,10 @@ export class FlavorController {
   async createFlavor(@Body() flavor: FlavorCreateDto) {
     return await this.flavorService.createFlavor(flavor);
   }
+  //拉取不重复的风味
+  @Get('get-flavor')
+  @UseGuards(LoginGuard)
+  async allFlavor() {
+    return await this.flavorService.distinctFlavor();
+  }
 }

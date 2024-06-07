@@ -27,8 +27,8 @@ export class SetMealService {
         take: pageSize,
       });
       const list = [];
-      const vo = new BackMealVo();
       for (const item of result) {
+        const vo = new BackMealVo();
         const category = await this.categoryEntity.findOne({
           where: {
             id: item.category_id,
@@ -85,6 +85,8 @@ export class SetMealService {
       newMeal.description = meal.description;
       newMeal.image = meal.image;
       newMeal.price = meal.price;
+      newMeal.create_user = meal.create_user;
+      newMeal.update_user = meal.update_user;
       await this.mealEntity.save(newMeal);
       return {
         code: HttpStatus.OK,
@@ -165,6 +167,27 @@ export class SetMealService {
         code: HttpStatus.OK,
         message: '查询成功',
         data: [vo],
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: '错误',
+        data: e,
+      };
+    }
+  }
+  //test
+  async test() {
+    try {
+      const [result, count] = await this.mealEntity.findAndCount({
+        skip: 1,
+        take: 5,
+      });
+      return {
+        code: HttpStatus.OK,
+        message: '成功',
+        data: result,
+        count: count,
       };
     } catch (e) {
       return {

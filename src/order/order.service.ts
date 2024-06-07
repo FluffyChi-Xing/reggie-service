@@ -263,4 +263,34 @@ export class OrderService {
       };
     }
   }
+  //新增订单查询
+  async getNew() {
+    try {
+      const recent = new Date();
+      const order = await this.ordersEntity.findOne({
+        where: {
+          order_time: recent,
+        },
+        order: {
+          order_time: 'DESC',
+        },
+      });
+      if (!order) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: '没有新的订单',
+        };
+      }
+      return {
+        code: HttpStatus.OK,
+        message: '您有新的瑞吉订单，请及时处理',
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: '错误',
+        data: e,
+      };
+    }
+  }
 }

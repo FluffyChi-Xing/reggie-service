@@ -4,6 +4,7 @@ import { Category } from './entities/category.entity';
 import { Repository } from 'typeorm';
 import { DishesDto } from './dto/dishes-category.dto';
 import { UpdateDto } from './dto/update-category.dto';
+import { CategoryVo } from './vo/category.vo';
 
 @Injectable()
 export class CategoryService {
@@ -145,6 +146,30 @@ export class CategoryService {
       return {
         code: HttpStatus.BAD_REQUEST,
         message: '修改失败',
+        data: e,
+      };
+    }
+  }
+  //拉取全部分类
+  async pullAll() {
+    try {
+      const category = await this.categoryEntity.find();
+      const result = [];
+      category.forEach((item) => {
+        const vo = new CategoryVo();
+        vo.id = item.id;
+        vo.name = item.name;
+        result.push(vo);
+      });
+      return {
+        code: HttpStatus.OK,
+        message: 'success',
+        data: result,
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: '错误',
         data: e,
       };
     }

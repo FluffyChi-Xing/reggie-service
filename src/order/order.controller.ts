@@ -41,4 +41,10 @@ export class OrderController {
   async searchOrder(@Query('id') id: number) {
     return await this.orderService.searchOne(id);
   }
+  //查询新订单
+  @Get('recent')
+  @UseGuards(LoginGuard)
+  async getRecent() {
+    return await this.orderService.getNew();
+  }
 }

@@ -32,4 +32,9 @@ export class SetMealController {
   async searchOne(@Query('id') id: number) {
     return await this.setMealService.searchOne(id);
   }
+  //test
+  @Get('test')
+  async test() {
+    return await this.setMealService.test();
+  }
 }

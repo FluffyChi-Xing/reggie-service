@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Dish_Flavor } from './entities/flavor.entity';
 import { Repository } from 'typeorm';
 import { FlavorCreateDto } from './dto/flavor-create.dto';
+import { FlavorBackVo } from './vo/flavor-back.vo';
 
 @Injectable()
 export class FlavorService {
@@ -46,6 +47,36 @@ export class FlavorService {
       return {
         code: HttpStatus.OK,
         message: '添加成功',
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: '错误',
+        data: e,
+      };
+    }
+  }
+  //拉取不重复的菜品风味
+  async distinctFlavor() {
+    try {
+      const flavor = await this.dishFlavor.find();
+      const uniqueFlavor = Array.from(
+        new Set(flavor.map((item) => item.name)),
+      ).map((name) => {
+        return flavor.find((item) => item.name === name);
+      });
+      const result = [];
+      const vo = new FlavorBackVo();
+      uniqueFlavor.forEach((item) => {
+        vo.id = item.id;
+        vo.name = item.name;
+        vo.value = item.value;
+        result.push(vo);
+      });
+      return {
+        code: HttpStatus.OK,
+        message: 'success',
+        data: result,
       };
     } catch (e) {
       return {

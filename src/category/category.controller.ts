@@ -40,4 +40,10 @@ export class CategoryController {
   async updateCat(@Body() up: UpdateDto) {
     return await this.categoryService.updateCat(up);
   }
+  //查询所有分类
+  @Get('findAll')
+  @UseGuards(LoginGuard)
+  async pullAll() {
+    return await this.categoryService.pullAll();
+  }
 }
