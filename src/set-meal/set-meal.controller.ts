@@ -27,4 +27,9 @@ export class SetMealController {
     return await this.setMealService.deleteMeal(name);
   }
   //查询套餐接口
+  @Get('search')
+  @UseGuards(LoginGuard)
+  async searchOne(@Query('id') id: number) {
+    return await this.setMealService.searchOne(id);
+  }
 }

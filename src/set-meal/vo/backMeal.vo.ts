@@ -1,8 +1,11 @@
 export class BackMealVo {
   name: string;
-  category_id: number;
+  category: string;
   status: number;
   price: number;
   code: string;
   description: string;
+  image: string;
+  update_time: Date;
+  create: string;
 }
