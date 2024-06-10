@@ -24,6 +24,7 @@ import { OrderModule } from './order/order.module';
 import { Orders } from './order/entity/orders.entity';
 import { Order_detail } from './order/entity/order_detail';
 import { Amount } from './order/entity/todayAmount.entity';
+import * as path from 'path';
 
 @Module({
   imports: [
@@ -31,7 +32,7 @@ import { Amount } from './order/entity/todayAmount.entity';
     //引入configService
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: 'src/.env',
+      envFilePath: path.join(__dirname, '.env'),
     }),
     //引入 Typeorm
     TypeOrmModule.forRootAsync({
