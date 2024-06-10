@@ -6,6 +6,7 @@ import { CreateMealDto } from './dto/create-set-meal.dto';
 import { BackMealVo } from './vo/backMeal.vo';
 import { Category } from '../category/entities/category.entity';
 import { Employee } from '../employee/entities/employee.entity';
+import { UpdateSetMealDto } from './dto/update-set-meal.dto';
 
 @Injectable()
 export class SetMealService {
@@ -188,6 +189,33 @@ export class SetMealService {
         message: '成功',
         data: result,
         count: count,
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: '错误',
+        data: e,
+      };
+    }
+  }
+  //更新套餐
+  async updateMeal(meal: UpdateSetMealDto) {
+    try {
+      await this.mealEntity.update(
+        {
+          name: meal.name,
+        },
+        {
+          price: meal.price,
+          description: meal.description,
+          status: meal.status,
+          image: meal.image,
+          category_id: meal.category_id,
+        },
+      );
+      return {
+        code: HttpStatus.OK,
+        message: '更新成功',
       };
     } catch (e) {
       return {

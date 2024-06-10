@@ -174,4 +174,31 @@ export class CategoryService {
       };
     }
   }
+  //根据id查询分类
+  async searchId(id: number) {
+    try {
+      const category = await this.categoryEntity.findOne({
+        where: {
+          id: id,
+        },
+      });
+      if (!category) {
+        return {
+          code: HttpStatus.BAD_REQUEST,
+          message: '错误,不存在分类',
+        };
+      }
+      return {
+        code: HttpStatus.OK,
+        message: '查询成功',
+        data: [category],
+      };
+    } catch (e) {
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: '错误',
+        data: e,
+      };
+    }
+  }
 }

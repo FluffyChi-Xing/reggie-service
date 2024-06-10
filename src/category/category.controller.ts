@@ -46,4 +46,10 @@ export class CategoryController {
   async pullAll() {
     return await this.categoryService.pullAll();
   }
+  //根据id查询分类
+  @Get('search')
+  @UseGuards(LoginGuard)
+  async searchId(@Query('id') id: number) {
+    return await this.categoryService.searchId(id);
+  }
 }

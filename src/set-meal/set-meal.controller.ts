@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { SetMealService } from './set-meal.service';
 import { LoginGuard } from '../common/guard/login-guard.guard';
 import { CreateMealDto } from './dto/create-set-meal.dto';
+import { UpdateSetMealDto } from './dto/update-set-meal.dto';
 
 @Controller('set-meal')
 export class SetMealController {
@@ -36,5 +37,11 @@ export class SetMealController {
   @Get('test')
   async test() {
     return await this.setMealService.test();
+  }
+  //update
+  @Post('update')
+  @UseGuards(LoginGuard)
+  async updateMeal(@Body() meal: UpdateSetMealDto) {
+    return await this.setMealService.updateMeal(meal);
   }
 }
