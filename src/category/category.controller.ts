@@ -23,7 +23,7 @@ export class CategoryController {
     return await this.categoryService.createDish(dish);
   }
   //新增套餐分类
-  @Post('package')
+  @Post('create')
   @UseGuards(LoginGuard)
   async createPackage(@Body() pack: DishesDto) {
     return await this.categoryService.createPack(pack);

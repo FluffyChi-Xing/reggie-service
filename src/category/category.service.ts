@@ -68,11 +68,11 @@ export class CategoryService {
   //新增套餐分类接口
   async createPack(pack: DishesDto) {
     try {
-      const packes = new Category();
-      packes.name = pack.name;
-      packes.type = pack.type;
-      packes.sort = pack.sort;
-      await this.categoryEntity.save(packes);
+      const packages = new Category();
+      packages.name = pack.name;
+      packages.type = pack.type;
+      packages.sort = pack.sort;
+      await this.categoryEntity.save(packages);
       return {
         code: HttpStatus.OK,
         message: '新增成功',
