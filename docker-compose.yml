@@ -21,6 +21,8 @@ services:
       MYSQL_ROOT_PASSWORD: 1234567890
     networks:
       - common-network
+    ports:
+      - "3306:3306"
 networks:
   common-network:
     driver: bridge
