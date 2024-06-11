@@ -74,6 +74,7 @@ export class ShoppingCartService {
         }
         mealCount += set_meal.price;
       }
+      /*
       //检查菜品风味id
       let dishFlavor: Dish_Flavor;
       if (cart.dish_flavor) {
@@ -94,11 +95,12 @@ export class ShoppingCartService {
           },
         });
       }
+       */
       const newCart = new Shopping_cart();
       newCart.user_id = cart.user_id;
       newCart.dish_id = cart.dish_id;
       newCart.image = cart.image;
-      newCart.dish_flavor = dishFlavor.value;
+      newCart.dish_flavor = '1';
       newCart.setmeal_id = cart.setmeal_id;
       newCart.amount = mealCount + dishCount;
       newCart.name = cart.name;
