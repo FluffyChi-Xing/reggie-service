@@ -22,7 +22,7 @@ services:
     networks:
       - common-network
     ports:
-      - "3306:3306"
+      - "3307:3307"
 networks:
   common-network:
     driver: bridge
