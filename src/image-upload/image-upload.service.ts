@@ -9,9 +9,9 @@ export class ImageUploadService {
     try {
       const config = {
         //key id
-        accessKeyId: 'LTAI5tC4aZAt5muKPmGqg1if',
+        accessKeyId: 'YOUR_ACCESSKEY_ID',
         //access key
-        accessKeySecret: 'R6aIISQDqCXfM6w2zgNNgLG2kG5brc',
+        accessKeySecret: 'YOUR_ACCESS_KEY_SECRET',
         //bucket name
         bucket: 'nest-upload-oss',
         //storage dir
