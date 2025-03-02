@@ -15,10 +15,10 @@ services:
   mysql-container:
     image: mysql
     volumes:
-      - /Reggie/fluffycx/mysql-data:/var/lib/mysql
+      - / your mysql docker container volumes path
     environment:
       MYSQL_DATABASE: reggie
-      MYSQL_ROOT_PASSWORD: 1234567890
+      MYSQL_ROOT_PASSWORD: your password
     networks:
       - common-network
     ports:
